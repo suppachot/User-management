@@ -15,6 +15,7 @@
           v-mask="'#-####-#####-##-#'"
           hide-details="auto"
           persistent-placeholder
+          :readonly="isUserInspectionRoute"
           density="compact"
         />
       </v-col>
@@ -54,24 +55,28 @@
           <v-radio
             label="สำนักทะเบียน"
             value="สำนักทะเบียน"
+            :readonly="isUserInspectionRoute"
             @change="showoffice"
           ></v-radio>
           <v-spacer></v-spacer>
           <v-radio
             label="ศาลากลาง"
             value="ศาลากลาง"
+            :readonly="isUserInspectionRoute"
             @change="showcityhall"
           ></v-radio>
           <v-spacer></v-spacer>
           <v-radio
             label="ศูนย์จังหวัด"
             value="ศูนย์จังหวัด"
+            :readonly="isUserInspectionRoute"
             @change="showprovince"
           ></v-radio>
           <v-spacer></v-spacer>
           <v-radio
             label="ศูนย์ภาค"
             value="ศูนย์ภาค"
+            :readonly="isUserInspectionRoute"
             @change="showregional"
           ></v-radio>
         </v-radio-group>
@@ -81,6 +86,7 @@
           v-model="localValue.zone"
           :items="itemzone"
           :disabled="isDisabledzone"
+          :readonly="isUserInspectionRoute"
           variant="outlined"
           density="compact"
         >
@@ -97,6 +103,7 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
       <v-col cols="12" sm="4" lg="4">
@@ -108,6 +115,7 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
     </v-row>
@@ -121,6 +129,7 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
     </v-row>
@@ -135,6 +144,7 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
       <v-col cols="12" sm="4" lg="4">
@@ -146,6 +156,7 @@
           variant="outlined"
           density="compact"
           v-if="hideprovince"
+          :readonly="isUserInspectionRoute"
         >
         </v-select>
       </v-col>
@@ -158,13 +169,14 @@
           variant="outlined"
           density="compact"
           v-if="hidedistrict"
+          :readonly="isUserInspectionRoute"
         >
         </v-select>
       </v-col>
     </v-row>
 
     <v-row v-if="hidepartandoffice">
-      <v-col cols="12" sm="6" lg="6">
+      <v-col cols="12" sm="4" lg="4">
         <v-text-field
           v-model="localValue.part"
           label="่ส่วน"
@@ -173,9 +185,10 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
-      <v-col cols="12" sm="6" lg="6">
+      <v-col cols="12" sm="4" lg="4">
         <v-text-field
           v-model="localValue.office"
           label="สำนักงาน"
@@ -184,24 +197,26 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
     </v-row>
     <SectionVue
       color="#D8B192"
-      icon="mdi-clipboard-text"
+      icon="mdi-card-account-phone"
       header="ข้อมูลการติดต่อ"
     />
     <v-row>
       <v-col cols="12" sm="4" lg="4">
         <v-text-field
           v-model="localValue.tel"
-          label="เบอร์โทรศัพท์ที่ามารถติดต่อได้(ที่ทำงาน)"
+          label="เบอร์โทรศัพท์ที่สามารถติดต่อได้(ที่ทำงาน)"
           placeholder="เบอร์โทรศัพท์ที่ามารถติดต่อได้(ที่ทำงาน)"
           variant="outlined"
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
       <v-col cols="12" sm="4" lg="4">
@@ -213,6 +228,7 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
       <v-col cols="12" sm="4" lg="4">
@@ -224,47 +240,74 @@
           hide-details="auto"
           persistent-placeholder
           density="compact"
+          :readonly="isUserInspectionRoute"
         />
       </v-col>
     </v-row>
 
-    <v-row>
-      <v-col cols="12" sm="7" lg="4" >
-        <h4>กลุ่มตำแหน่งของผู้เข้าใช้ระบบงาน(เลือได้เพียง 1 ช่อง)</h4>
+    <v-row >
+      <v-col cols="12" sm="7" lg="4" class="d-flex">
+        <h4 density="compact">
+          กลุ่มตำแหน่งของผู้เข้าใช้ระบบงาน(เลือได้เพียง 1 ช่อง)
+        </h4>
       </v-col>
-      <v-col cols="12" sm="3" lg="2" >
-        <v-checkbox label="ผู้ตรวจการ" value="ผู้ตรวจการ" v-model="localValue.inspector" ></v-checkbox>
+      <v-col cols="12" sm="3" lg="2" class="d-flex">
+        <v-checkbox
+          label="ผู้ตรวจการ"
+          value="ผู้ตรวจการ"
+          v-model="localValue.inspector"
+          density="compact"
+          :readonly="isUserInspectionRoute"
+        ></v-checkbox>
       </v-col>
+      <v-col cols="12" sm="2" lg="2" class="d-flex">
+        <v-text-field
+          v-model="localValue.password"
+          label="รหัสผ่าน"
+          placeholder="รหัสผ่าน"
+          variant="outlined"
+          hide-details="auto"
+          persistent-placeholder
+          density="compact"
+          :readonly="isUserInspectionRoute"
+        />
+      </v-col>
+
     </v-row>
 
     <v-row>
-      <v-col>
-        <v-radio-group v-if="hideradio" v-model="localValue.radiogroup">
+      <v-col >
+        <v-radio-group v-model="localValue.radiogroup" v-if="hideradio">
           <v-radio
             label="1.นายทะเบียน(ผู้ว่าราชารจังหวัด/รองผู้ว่าราชการจังหวัด/ปลัดจังหวัด/นายอำเภอ)"
             value="1.นายทะเบียน(ผู้ว่าราชารจังหวัด/รองผู้ว่าราชการจังหวัด/ปลัดจังหวัด/นายอำเภอ)"
             :disabled="isDisabled1"
+            :readonly="isUserInspectionRoute"
           ></v-radio>
           <v-radio
             label="2.หัวหน้าผู้รับผิดชอบ(ปลัดอำเภอหัวหน้าฝ่าย/ปลัดอำเภอ/นิติกร)"
             value="2.หัวหน้าผู้รับผิดชอบ(ปลัดอำเภอหัวหน้าฝ่าย/ปลัดอำเภอ/นิติกร)"
             :disabled="isDisabled2"
+            :readonly="isUserInspectionRoute"
           ></v-radio>
           <v-radio
             label="3.ผู้ปฎิบัติงาน(เจ้าพนักงานปกครอง/ปลัอำเภอ/นิติกร/เจ้าหน้าที่ปกครอง/พนักงานราชการ/สมาชิก อ.ส./ลูกจ้าง)"
             value="3.ผู้ปฎิบัติงาน(เจ้าพนักงานปกครอง/ปลัอำเภอ/นิติกร/เจ้าหน้าที่ปกครอง/พนักงานราชการ/สมาชิก อ.ส./ลูกจ้าง)"
             :disabled="isDisabled3"
+            :readonly="isUserInspectionRoute"
           ></v-radio>
           <v-radio label="4.เสมียนตรา" value="4"></v-radio>
           <v-radio
             label="8.ศูนย์บริหารทะเบียนภาค/ศูนย์บริหารการทะเบียนภาคสาขาจังหวัด"
             value="8.ศูนย์บริหารทะเบียนภาค/ศูนย์บริหารการทะเบียนภาคสาขาจังหวัด"
             :disabled="isDisabled8"
+            :readonly="isUserInspectionRoute"
           ></v-radio>
           <v-radio
             v-if="hideDisabled9"
             label="9.ผู้ดูแลระบบ"
             value="9.ผู้ดูแลระบบ"
+            :readonly="isUserInspectionRoute"
           ></v-radio>
         </v-radio-group>
       </v-col>
@@ -276,7 +319,7 @@
 import { reactive } from "vue";
 import SectionVue from "@/components/Widget/Section";
 export default {
-  name: "User-Request-General",
+  name: "User-General",
 
   components: {
     SectionVue,
@@ -289,7 +332,7 @@ export default {
       hideprovince: false,
       hidedistrict: false,
       hidepartandoffice: false,
-      isDisabledzone:true,
+      isDisabledzone: true,
       isDisabled1: false,
       isDisabled2: false,
       isDisabled3: false,
@@ -368,7 +411,7 @@ export default {
     },
     showregional() {
       if (this.localValue.radioname === "ศูนย์ภาค") {
-        this.hideprovince = true;
+        this.hideprovince = false;
         this.hidedistrict = false;
         this.hidepartandoffice = false;
         this.hideradio = true;
@@ -408,12 +451,18 @@ export default {
           radioname: "",
           radiogroup: "",
           inspector: "",
+          password: "",
         };
       },
     },
     readonly: {
       type: Boolean,
       default: true,
+    },
+  },
+  computed: {
+    isUserInspectionRoute() {
+      return this.$route.name === "userInspection";
     },
   },
   setup(props) {

@@ -10,10 +10,11 @@
         <v-checkbox
           v-for="item in items"
           :key="item.value"
-          v-model="localValue.selected"
+          v-model="localValue.selectedPermission"
           :value="item.value"
           :label="item.label"
           density="compact"
+          :readonly="isUserInspectionRoute"
         ></v-checkbox>
       </v-col>
     </v-row>
@@ -24,21 +25,26 @@
 import { reactive } from "vue";
 import SectionVue from "@/components/Widget/Section";
 export default {
-  name: "User-Request-Permiission",
+  name: "User-Permiission",
   components: {
     SectionVue,
+  },
+  computed: {
+    isUserInspectionRoute() {
+      return this.$route.name === "userInspection";
+    },
   },
 
   data() {
     return {
       items: [
         {
-          value: "ระบบงานบันทึหัวกระสุน ปลอกกระสุน",
-          label: "ระบบงานบันทึหัวกระสุน ปลอกกระสุน",
+          value: "ระบบงานบันทึกหัวกระสุน ปลอกกระสุน",
+          label: "ระบบงานบันทึกหัวกระสุน ปลอกกระสุน",
         },
         {
-          value: "ทะเบียนอาวุธปืน ดอไม้เพลิง สิ่งเทียมอาวุธปืน และวัตถุระเบิด",
-          label: "ทะเบียนอาวุธปืน ดอไม้เพลิง สิ่งเทียมอาวุธปืน และวัตถุระเบิด",
+          value: "ทะเบียนอาวุธปืน ดอกไม้เพลิง สิ่งเทียมอาวุธปืน และวัตถุระเบิด",
+          label: "ทะเบียนอาวุธปืน ดอกไม้เพลิง สิ่งเทียมอาวุธปืน และวัตถุระเบิด",
         },
         { value: "ระบบงานการโรงแรม", label: "ระบบงานการโรงแรม" },
         {
@@ -65,18 +71,17 @@ export default {
   },
 
   props: {
-    
     modelValue: {
       type: Object,
       default: () => {
         return {
-          selected: [],
+          selectedPermission: [],
         };
       },
     },
     readonly: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   setup(props) {

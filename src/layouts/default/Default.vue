@@ -9,14 +9,14 @@
     <AppView />
     <ScrollTop />
 
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </v-app>
 </template>
 
 <script>
 import AppBar from "./AppBar";
 import AppView from "./View";
-import AppFooter from "./Footer";
+// import AppFooter from "./Footer";
 import ScrollTop from "@/components/Widget/ScrollTop";
 
 import SidebarImg from '@/assets/images/gun.png'
@@ -27,7 +27,7 @@ export default {
   components: {
     AppBar,
     AppView,
-    AppFooter,
+    // AppFooter,
     ScrollTop,
   },
 
