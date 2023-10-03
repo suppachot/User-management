@@ -2,14 +2,17 @@
   <v-container>
     <SectionVue
       color="#D8B192"
-      icon="mdi-clipboard-text"
+      icon="mdi-clipboard-title"
       header="ข้อมูลประวัติการเปลี่ยนแปลงของผู้ปฎิบัติงาน"
     />
+
     <v-data-table
-    :headers="headers"
-    :items="items"
-    :search="search"
-  ></v-data-table>
+      v-model:items-per-page="itemsPerPage"
+      :headers="headers"
+      :items="desserts"
+      item-key="name"
+      class="elevation-1"
+    ></v-data-table>
   </v-container>
 </template>
 
@@ -25,49 +28,312 @@ export default {
 
   data() {
     return {
-      search: '', // ตัวแปรสำหรับการค้นหา
+      
+      itemsPerPage: 5,
       headers: [
         {
-          text: 'เลขบัตรประจำตัวประชาชน',
-          value: 'idCardNumber',
+          title: "เลขบัตรประจำตัวประชาชน",
+          key: "idCardNumber",
+          width: "225",
         },
         {
-          text: 'ชื่อผู้ปฎิบัติงาน',
-          value: 'employeeName',
+          title: "ชื่อผู้ปฎิบัติงาน",
+          key: "employeeName",
+          width: "200",
         },
         {
-          text: 'หน่วยงานที่ปฎิบัติ',
-          value: 'department',
+          title: "หน่วยงานที่ปฎิบัติ",
+          key: "department",
+          width: "230",
         },
         {
-          text: 'วันที่จำหน่าย',
-          value: 'dateOfRelease',
+          title: "วันที่จำหน่าย",
+          key: "dateOfRelease",
+          width: "140",
         },
         {
-          text: 'วันที่ย้ายเข้ามาปฎิบัติงาน',
-          value: 'dateOfMoveIn',
+          title: "วันที่ย้ายเข้ามาปฎิบัติงาน",
+          key: "dateOfMoveIn",
+          width: "140",
         },
         {
-          text: 'วันที่ย้ายหรือลาออก',
-          value: 'dateOfMoveOutOrResignation',
+          title: "วันที่ย้ายหรือลาออก",
+          key: "dateOfMoveOut",
+          width: "140",
         },
       ],
-      items: [
+      desserts: [
         {
-          idCardNumber: '1234567890123',
-          employeeName: 'John Doe',
-          department: 'HR',
-          dateOfRelease: '2023-09-01',
-          dateOfMoveIn: '2023-09-15',
-          dateOfMoveOutOrResignation: '2023-10-20',
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "อำเภอเมืองกาญจนบุรี",
+          dateOfRelease: "21/06/2562",
+          dateOfMoveIn: "16/01/2561",
+          dateOfMoveOut: "00/00/0000",
         },
-        // เพิ่มข้อมูลอื่น ๆ ตามต้องการ
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "อำเภอเมืองนนทบุรี",
+          dateOfRelease: "20/06/2562",
+          dateOfMoveIn: "16/01/2561",
+          dateOfMoveOut: "00/00/0000",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "อำเภอท่าสองยางทดสอบ",
+          dateOfRelease: "20/06/2562",
+          dateOfMoveIn: "16/01/2561",
+          dateOfMoveOut: "00/00/0000",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "จังหวัดตาก",
+          dateOfRelease: "18/03/2562",
+          dateOfMoveIn: "16/01/2561",
+          dateOfMoveOut: "00/00/0000",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "18/03/2562",
+          dateOfMoveIn: "16/01/2561",
+          dateOfMoveOut: "00/00/0000",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
+        {
+          idCardNumber: "3-1012-2917-12-1",
+          employeeName: "นายธีระ อนุุตรานนท์",
+          department: "ศูนย์บริการประชาชน",
+          dateOfRelease: "06/05/2560",
+          dateOfMoveIn: "31/08/2558",
+          dateOfMoveOut: "03/05/2560",
+        },
       ],
     };
   },
 
   props: {
-    modelValue: {
+    modelkey: {
       type: Object,
       default: () => {
         return {};
@@ -80,9 +346,9 @@ export default {
   },
 
   setup(props) {
-    const localValue = reactive(props.modelValue);
+    const localkey = reactive(props.modelkey);
     return {
-      localValue,
+      localkey,
     };
   },
 };

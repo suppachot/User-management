@@ -14,8 +14,10 @@
           :value="item.value"
           :label="item.label"
           density="compact"
+          hide-details="auto"
           :readonly="isUserInspectionRoute"
         ></v-checkbox>
+        
       </v-col>
     </v-row>
   </v-container>
@@ -69,7 +71,6 @@ export default {
       ],
     };
   },
-
   props: {
     modelValue: {
       type: Object,
@@ -90,5 +91,7 @@ export default {
       localValue,
     };
   },
+
+
 };
 </script>
